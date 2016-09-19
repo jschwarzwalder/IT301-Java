@@ -5,7 +5,7 @@ public class Test {
     private String program;
 
     public Test() {
-        program = "IntelliJ";
+        program = "Eclipse";
     }
 
 
