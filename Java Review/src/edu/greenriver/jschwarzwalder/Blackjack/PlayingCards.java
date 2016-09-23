@@ -31,6 +31,10 @@ public class PlayingCards {
 		this.height = height;
 	}
 	
+	public String toString(){
+		String cardString ="This card is " + color + " , " + height + " tall, and " + width + " wide.";
+		return cardString;
+	}
 	
 
 
