@@ -1,15 +1,23 @@
 package edu.greenriver.jschwarzwalder.review;
 
+import java.util.Random;
+
 public class Randomness {
+
+	private static Random myRandom = new Random();
 	
-	//constructor?
+
 	
 	//return "heads" or "tails"
-	public String flipACoin() {
-		Random myRandom = new Random();
+	public static String flipACoin() {
+
 		
 		//flip the coin...
-		return "";
+		if (myRandom.nextBoolean()){
+			return "heads";
+		} else {
+			return "tails";
+		}
 	}
 
 }
