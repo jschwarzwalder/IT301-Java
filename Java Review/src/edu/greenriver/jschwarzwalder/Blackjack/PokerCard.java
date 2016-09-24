@@ -56,7 +56,7 @@ public class PokerCard extends PlayingCard {
 
 	@Override
 	public String toString() {
-		return "a " + getColor() + " " + rank + " of " + suit ;
+		return "a " + getColor() + " " + rank + " of " + suit  ;
 	}
 	
 	
