@@ -62,10 +62,17 @@ public class CardGameTest {
 	
 	
 	/**
-	 * Print out the the names of cards in the console
+	 * Print out the the names of cards in the console on one line
 	 */
-	public static void printdeck() {
+	public static void printDeck() {
 		System.out.println(Arrays.toString(cardDeck));
+	}
+	
+	public static void printCards(){
+		System.out.println("Deck: \n");
+		for(int i = 0 ; i < cardDeck.length; i++){
+			System.out.println("   " + cardDeck[i] + " \n");
+		}
 	}
 
 	/**
@@ -76,7 +83,8 @@ public class CardGameTest {
 	public static void main(String[] args) {
 		buildDeck();
 		shuffle(3);
-		printdeck();
+		printDeck();
+		printCards();
 
 	}
 
