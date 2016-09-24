@@ -1,11 +1,26 @@
+/*
+ * Jami Schwarzwalder
+ * 9/22/2016 
+ * PlayingCard.java
+ * Generic Playing Card Class
+ */
+
 package edu.greenriver.jschwarzwalder.Blackjack;
 
-public class PlayingCards {
+public class PlayingCard {
 	private String color;
 	private int width;
 	private int height;
 	
-	public PlayingCards(String mColor, int mWidth, int mHeight ) {
+	/**
+     * Creates a new Playing card with color, width and height 
+     * 
+     * @param mColor the name of the card color
+     * @param mWidth the width of the playing card
+     * @param mHeight the height of the playing card
+     * 
+     */
+	public PlayingCard(String mColor, int mWidth, int mHeight ) {
 		color = mColor;
 		width = mWidth;
 		height = mHeight;
