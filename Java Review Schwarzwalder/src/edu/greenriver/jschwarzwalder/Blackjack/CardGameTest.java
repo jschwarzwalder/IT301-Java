@@ -22,6 +22,7 @@ public class CardGameTest {
 	private static void buildDeck() {
 		int index = 0;
 		for (PokerCard.Suit suit : PokerCard.Suit.values()) {
+			
 			if (suit == PokerCard.Suit.HEARTS || suit == PokerCard.Suit.DIAMONDS) {
 				color = "red";
 			} else if (suit == PokerCard.Suit.CLUBS || suit == PokerCard.Suit.SPADES) {
@@ -35,6 +36,7 @@ public class CardGameTest {
 				PokerCard card = new PokerCard(color, WIDTH, HEIGHT, suit, rank);
 				cardDeck[index] = card;
 				index++;
+				
 			}
 
 		}
