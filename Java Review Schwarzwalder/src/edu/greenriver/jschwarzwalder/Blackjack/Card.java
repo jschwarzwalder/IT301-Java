@@ -1,8 +1,8 @@
 /*
 	 * Jami Schwarzwalder
 	 * 9/24/2016 
-	 * PokerCard.java
-	 * A Poker Card from Standard 52 card deck
+	 * Card.java
+	 * A Card from Standard 52 card deck
 	 */
 
 package edu.greenriver.jschwarzwalder.Blackjack;

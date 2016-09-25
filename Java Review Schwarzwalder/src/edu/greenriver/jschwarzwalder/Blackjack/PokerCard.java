@@ -1,13 +1,13 @@
 /*
  * Jami Schwarzwalder
  * 9/24/2016 
- * PokerCard.java
+ * Card.java
  * A Poker Card from Standard 52 card deck
  */
 
 package edu.greenriver.jschwarzwalder.Blackjack;
 
-public class PokerCard extends PlayingCard {
+public class Card extends PlayingCard {
 	/**
 	 * This enum has values for the 4 possible suits of a standard playing card.
 	 * Each is listed as Plural Noun.
@@ -72,7 +72,7 @@ public class PokerCard extends PlayingCard {
 	 *            the rank of the card selected from enum Ranks
 	 * 
 	 */
-	public PokerCard(String mColor, int mWidth, int mHeight, Suit mSuit, Rank mRank) {
+	public Card(String mColor, int mWidth, int mHeight, Suit mSuit, Rank mRank) {
 		super(mColor, mWidth, mHeight);
 		suit = mSuit;
 		rank = mRank;

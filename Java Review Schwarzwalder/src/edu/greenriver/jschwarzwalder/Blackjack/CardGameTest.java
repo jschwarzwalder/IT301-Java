@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class CardGameTest {
-	private static PokerCard[] cardDeck = new PokerCard[52];
+	private static Card[] cardDeck = new Card[52];
 	private static int WIDTH = 250; // in pixels
 	private static int HEIGHT = 350; // in pixels
 	private static String color = "white"; //default value in case error
@@ -21,19 +21,19 @@ public class CardGameTest {
 	//calculates color based on Suit
 	private static void buildDeck() {
 		int index = 0;
-		for (PokerCard.Suit suit : PokerCard.Suit.values()) {
+		for (Card.Suit suit : Card.Suit.values()) {
 			
-			if (suit == PokerCard.Suit.HEARTS || suit == PokerCard.Suit.DIAMONDS) {
+			if (suit == Card.Suit.HEARTS || suit == Card.Suit.DIAMONDS) {
 				color = "red";
-			} else if (suit == PokerCard.Suit.CLUBS || suit == PokerCard.Suit.SPADES) {
+			} else if (suit == Card.Suit.CLUBS || suit == Card.Suit.SPADES) {
 				color = "black";
 			} else {
 				// test if there is an error
 				//color should never result in white
 				color = "white";
 			}
-			for (PokerCard.Rank rank : PokerCard.Rank.values()) {
-				PokerCard card = new PokerCard(color, WIDTH, HEIGHT, suit, rank);
+			for (Card.Rank rank : Card.Rank.values()) {
+				Card card = new Card(color, WIDTH, HEIGHT, suit, rank);
 				cardDeck[index] = card;
 				index++;
 				
@@ -43,11 +43,11 @@ public class CardGameTest {
 	}
 	
 	//goes through all cards in deck and swaps value with value in random position
-	private static void randomize(PokerCard[] deck) {
+	private static void randomize(Card[] deck) {
 		for (int i = 0; i < deck.length; i++) {
 			int swapPosition = randNum.nextInt(52);
 			if (i != swapPosition) {
-				PokerCard currentValue = deck[i];
+				Card currentValue = deck[i];
 				deck[i] = deck[swapPosition];
 				deck[swapPosition] = currentValue;
 			}

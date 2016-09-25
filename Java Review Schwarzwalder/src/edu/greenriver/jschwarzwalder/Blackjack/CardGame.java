@@ -1,3 +1,9 @@
+/*
+	 * Jami Schwarzwalder
+	 * 9/24/2016 
+	 * CardGame.java
+	 * Abstrct CardGame class.
+	 */
 package edu.greenriver.jschwarzwalder.Blackjack;
 
 public abstract class CardGame {
@@ -5,10 +11,16 @@ public abstract class CardGame {
 	protected String name;
 	protected String welcomeMessage;
 	
-	
+	/**
+	 * builds a Card Game with a printout of the name of the game and a welcome message
+	 * @param name Title of game
+	 * @param welcomeMessage Message for player
+	 */
 	public CardGame(String name, String welcomeMessage) {
 		this.name = name;
 		this.welcomeMessage = welcomeMessage;
+		Console.print("Play a " + name + " game!");
+		Console.print(welcomeMessage);
 	}
 
 	/**
