@@ -1,6 +1,6 @@
 /*
  * Jami Schwarzwalder
- * 9/22/2016 
+ * 9/24/2016 
  * PlayingCard.java
  * Generic Playing Card Class
  */

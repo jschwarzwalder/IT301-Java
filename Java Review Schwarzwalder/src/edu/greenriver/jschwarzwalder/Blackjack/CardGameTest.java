@@ -1,3 +1,10 @@
+/*
+ * Jami Schwarzwalder
+ * 9/22/2016 
+ * CardGameTest.java
+ * Class to shuffle and build deck of cards
+ */
+
 package edu.greenriver.jschwarzwalder.Blackjack;
 
 import java.util.Arrays;
@@ -25,11 +32,9 @@ public class CardGameTest {
 				color = "white";
 			}
 			for (PokerCard.Rank rank : PokerCard.Rank.values()) {
-
 				PokerCard card = new PokerCard(color, WIDTH, HEIGHT, suit, rank);
 				cardDeck[index] = card;
 				index++;
-
 			}
 
 		}
