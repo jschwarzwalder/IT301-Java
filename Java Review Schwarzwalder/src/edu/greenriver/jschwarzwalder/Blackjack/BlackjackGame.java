@@ -8,6 +8,10 @@ package edu.greenriver.jschwarzwalder.Blackjack;
 
 import java.util.Random;
 
+import edu.greenriver.jschwarzwalder.cardgame.CardGame;
+import edu.greenriver.jschwarzwalder.cards.Card;
+import edu.greenriver.jschwarzwalder.console.Console;
+
 public class BlackjackGame extends CardGame {
 	private Card[] cardDeck = new Card[52];
 	private static Random randNum = new Random();
@@ -33,7 +37,7 @@ public class BlackjackGame extends CardGame {
 		buildDeck();
 		playerHand = 0;
 		dealerHand = 0;
-		shuffle();
+		//shuffle();
 	}
 
 	/**
@@ -116,13 +120,13 @@ public class BlackjackGame extends CardGame {
 
 	private void dealtoPlayer(){
 		Card dealtCard = deal();
-		Console.print("You are dealt a(n)" + dealtCard.getRank() + " of " + dealtCard.getSuit() );
+		Console.print("You are dealt a(n) " + dealtCard.getRank() + " of " + dealtCard.getSuit() );
 		playerHand += dealtCard.getValue();
 	}
 
 	private void dealToDealer() {
 		Card dealtCard = deal();
-		Console.print("DealerDealt" + dealtCard.getRank() + " of " + dealtCard.getSuit());
+		Console.print("Dealer Dealt " + dealtCard.getRank() + " of " + dealtCard.getSuit());
 		dealerHand += dealtCard.getValue();
 		Console.print("Dealer total: " + dealerHand);
 	}

@@ -5,7 +5,7 @@
 	 * A Card from Standard 52 card deck
 	 */
 
-package edu.greenriver.jschwarzwalder.Blackjack;
+package edu.greenriver.jschwarzwalder.cards;
 
 public class Card {
 		/**

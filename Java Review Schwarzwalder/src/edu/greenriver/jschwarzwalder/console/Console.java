@@ -1,4 +1,4 @@
-package edu.greenriver.jschwarzwalder.Blackjack;
+package edu.greenriver.jschwarzwalder.console;
 
 import java.util.Scanner;
 

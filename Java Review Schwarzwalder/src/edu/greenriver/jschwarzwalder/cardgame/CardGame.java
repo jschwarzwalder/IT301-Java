@@ -4,7 +4,10 @@
 	 * CardGame.java
 	 * Abstrct CardGame class.
 	 */
-package edu.greenriver.jschwarzwalder.Blackjack;
+package edu.greenriver.jschwarzwalder.cardgame;
+
+import edu.greenriver.jschwarzwalder.cards.Card;
+import edu.greenriver.jschwarzwalder.console.Console;
 
 public abstract class CardGame {
 	

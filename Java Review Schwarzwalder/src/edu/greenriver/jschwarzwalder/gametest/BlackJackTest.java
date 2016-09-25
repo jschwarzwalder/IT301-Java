@@ -5,7 +5,9 @@
 	 * Plays one round of Blackjack.
 	 */
 
-package edu.greenriver.jschwarzwalder.Blackjack;
+package edu.greenriver.jschwarzwalder.gametest;
+
+import edu.greenriver.jschwarzwalder.Blackjack.BlackjackGame;
 
 public abstract class BlackJackTest {
 
