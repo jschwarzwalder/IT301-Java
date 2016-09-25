@@ -13,31 +13,49 @@ import edu.greenriver.jschwarzwalder.cards.Card;
 import edu.greenriver.jschwarzwalder.console.Console;
 
 public class BlackjackGame extends CardGame {
-	private Card[] cardDeck = new Card[52];
-	private static Random randNum = new Random();
-	private static int numofShuffles = 3;
-	private int deckIndex = 0;
-	private int playerHand = 0;
-	private int dealerHand = 0;
-	
+	/**
+	 * The number of cards initially dealt to player 
+	 */
+	private static final int FIRST_DEAL = 2;
+
+	/**
+	 * The number of points that player can be greater than or equal too 
+	 * before loosing round.
+	 */
+	private static final int BUST_THRESHOLD = 21;
+
+	/**
+	 * The number of times you shuffle the deck of cards
+	 */
+	private static final int NUM_OF_SHUFFLES = 3;
+
 	/**
 	 * The maximum value at which the dealer will stop hitting
 	 */
-	public static final int DEALER_MAX = 16;
-	
+	private static final int DEALER_MAX = 16;
+
+	private Card[] cardDeck = new Card[52];
+	private static Random randNum = new Random();
+
+	private int deckIndex = 0;
+	private int playerHand = 0;
+	private int dealerHand = 0;
 
 	/**
-	 * builds a Blackjack Game with a printout of the name of the game and a welcome message
-	 * @param name Title of game
-	 * @param welcomeMessage Message for player
+	 * builds a Blackjack Game with a printout of the name of the game and a
+	 * welcome message
+	 * 
+	 * @param name
+	 *            Title of game
+	 * @param welcomeMessage
+	 *            Message for player
 	 */
 	public BlackjackGame(String name, String welcomeMessage) {
 		super(name, welcomeMessage);
-		// TODO Auto-generated constructor stub
 		buildDeck();
 		playerHand = 0;
 		dealerHand = 0;
-		//shuffle();
+		shuffle();
 	}
 
 	/**
@@ -45,7 +63,7 @@ public class BlackjackGame extends CardGame {
 	 */
 	@Override
 	public void shuffle() {
-		for (int i = 0; i < numofShuffles; i++) {
+		for (int i = 0; i < NUM_OF_SHUFFLES; i++) {
 			randomize(cardDeck);
 		}
 		deckIndex = 0;
@@ -53,14 +71,14 @@ public class BlackjackGame extends CardGame {
 	}
 
 	/**
-	 * Deals a single card from the deck to the user 
+	 * Deals a single card from the deck to the user
 	 * 
 	 * @return Card from deck
 	 */
 	@Override
 	public Card deal() {
 		Card dealCard = cardDeck[deckIndex];
-		deckIndex ++;
+		deckIndex++;
 		return dealCard;
 	}
 
@@ -71,7 +89,7 @@ public class BlackjackGame extends CardGame {
 	public void playRound() {
 		playerHand = 0;
 		dealerHand = 0;
-		for (int i = 1; i <= 2; i++) {
+		for (int i = 1; i <= FIRST_DEAL; i++) {
 			dealtoPlayer();
 		}
 		printPlayerTotal();
@@ -80,7 +98,7 @@ public class BlackjackGame extends CardGame {
 			while (dealerHand <= DEALER_MAX) {
 				dealToDealer();
 			}
-			if (dealerHand > 21) {
+			if (dealerHand > BUST_THRESHOLD) {
 				Console.print("Dealer Busts");
 				Console.print("Player Wins!");
 			} else if (playerHand >= dealerHand) {
@@ -92,7 +110,7 @@ public class BlackjackGame extends CardGame {
 
 		shuffle();
 	}
-	
+
 	private void buildDeck() {
 		int index = 0;
 		for (Card.Suit suit : Card.Suit.values()) {
@@ -100,13 +118,14 @@ public class BlackjackGame extends CardGame {
 				Card card = new Card(suit, rank);
 				cardDeck[index] = card;
 				index++;
-				
+
 			}
 
 		}
 	}
 	
-	private  void randomize(Card[] deck) {
+	//Switch position of each card in array with a random position.
+	private void randomize(Card[] deck) {
 		for (int i = 0; i < deck.length; i++) {
 			int swapPosition = randNum.nextInt(52);
 			if (i != swapPosition) {
@@ -118,9 +137,9 @@ public class BlackjackGame extends CardGame {
 
 	}
 
-	private void dealtoPlayer(){
+	private void dealtoPlayer() {
 		Card dealtCard = deal();
-		Console.print("You are dealt a(n) " + dealtCard.getRank() + " of " + dealtCard.getSuit() );
+		Console.print("You are dealt a(n) " + dealtCard.getRank() + " of " + dealtCard.getSuit());
 		playerHand += dealtCard.getValue();
 	}
 
@@ -141,7 +160,7 @@ public class BlackjackGame extends CardGame {
 		if (Hit.equalsIgnoreCase("Y")) {
 			dealtoPlayer();
 			printPlayerTotal();
-			if (playerHand > 21) {
+			if (playerHand > BUST_THRESHOLD) {
 				Console.print("Bust");
 				Console.print("Dealer wins!");
 				return false;

@@ -2,7 +2,7 @@
 	 * Jami Schwarzwalder
 	 * 9/24/2016 
 	 * CardGame.java
-	 * Abstrct CardGame class.
+	 * Abstract CardGame class.
 	 */
 package edu.greenriver.jschwarzwalder.cardgame;
 
