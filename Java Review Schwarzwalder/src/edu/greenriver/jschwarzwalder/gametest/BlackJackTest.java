@@ -7,7 +7,7 @@
 
 package edu.greenriver.jschwarzwalder.gametest;
 
-import edu.greenriver.jschwarzwalder.Blackjack.BlackjackGame;
+import edu.greenriver.jschwarzwalder.blackjackgame.BlackjackGame;
 
 public abstract class BlackJackTest {
 

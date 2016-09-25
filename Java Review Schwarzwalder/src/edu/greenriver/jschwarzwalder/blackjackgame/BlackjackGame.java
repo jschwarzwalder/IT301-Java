@@ -4,7 +4,7 @@
 	 * BlackJackGame.java
 	 * A subclass of CardGame to play a simplified version of blackjack.
 	 */
-package edu.greenriver.jschwarzwalder.Blackjack;
+package edu.greenriver.jschwarzwalder.blackjackgame;
 
 import java.util.Random;
 
@@ -13,6 +13,12 @@ import edu.greenriver.jschwarzwalder.cards.Card;
 import edu.greenriver.jschwarzwalder.console.Console;
 
 public class BlackjackGame extends CardGame {
+
+	/**
+	 * The number of cards in deck of cards 
+	 */
+	private static final int DECK_SIZE = 52;
+
 	/**
 	 * The number of cards initially dealt to player 
 	 */
@@ -34,7 +40,7 @@ public class BlackjackGame extends CardGame {
 	 */
 	private static final int DEALER_MAX = 16;
 
-	private Card[] cardDeck = new Card[52];
+	private Card[] cardDeck = new Card[DECK_SIZE];
 	private static Random randNum = new Random();
 
 	private int deckIndex = 0;
