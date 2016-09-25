@@ -5,7 +5,7 @@
  * Generic Playing Card Class
  */
 
-package edu.greenriver.jschwarzwalder.Blackjack;
+package edu.greenriver.jschwarzwalder.CardShuffle;
 
 public class PlayingCard {
 	private String color;

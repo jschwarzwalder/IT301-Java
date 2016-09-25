@@ -5,9 +5,9 @@
  * A Poker Card from Standard 52 card deck
  */
 
-package edu.greenriver.jschwarzwalder.Blackjack;
+package edu.greenriver.jschwarzwalder.CardShuffle;
 
-public class Card extends PlayingCard {
+public class PokerCard extends PlayingCard {
 	/**
 	 * This enum has values for the 4 possible suits of a standard playing card.
 	 * Each is listed as Plural Noun.
@@ -72,7 +72,7 @@ public class Card extends PlayingCard {
 	 *            the rank of the card selected from enum Ranks
 	 * 
 	 */
-	public Card(String mColor, int mWidth, int mHeight, Suit mSuit, Rank mRank) {
+	public PokerCard(String mColor, int mWidth, int mHeight, Suit mSuit, Rank mRank) {
 		super(mColor, mWidth, mHeight);
 		suit = mSuit;
 		rank = mRank;
