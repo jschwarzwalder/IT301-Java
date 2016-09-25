@@ -80,6 +80,12 @@ public class Card {
 		private Suit suit;
 		private Rank rank;
 
+		/**
+		 * Creates a new Poker card 
+		 *      
+		 * default value is ACE of SPADES
+		 * 
+		 */
 		public Card(){
 			suit = Suit.SPADES;
 			rank = Rank.ACE;
@@ -87,22 +93,15 @@ public class Card {
 		}
 		
 		/**
-		 * Creates a new Poker card with color, width, height suit and rank
+		 * Creates a new Poker card with suit and rank
 		 *
-		 * @param mColor
-		 *            the name of the card color
-		 * @param mWidth
-		 *            the width of the poker card
-		 * @param mHeight
-		 *            the height of the poker card
 		 * @param mSuit
 		 *            the suit of card selected from enum Suits
 		 * @param mRank
 		 *            the rank of the card selected from enum Ranks
 		 * 
 		 */
-		public PokerCard(String mColor, int mWidth, int mHeight, Suit mSuit, Rank mRank) {
-			super(mColor, mWidth, mHeight);
+		public Card(Suit mSuit, Rank mRank) {
 			suit = mSuit;
 			rank = mRank;
 
@@ -154,6 +153,15 @@ public class Card {
 		public int getValue() {
 			return rank.getValue();
 		}
+		
+		/**
+		 * Returns the String value of the current color of the card
+		 * 
+		 * @return String The current color of card
+		 */
+		public String getColor() {
+			return suit.getColor();
+		}
 
 		/**
 		 * Creates human readable description of card including color, rank and
@@ -168,4 +176,4 @@ public class Card {
 
 	}
 
-}
+
