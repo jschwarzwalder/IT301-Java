@@ -91,8 +91,7 @@ public class PokerCard extends PlayingCard {
 	/**
 	 * Sets the suit of the card to one from Suit enum
 	 * 
-	 * @param suit
-	 *            from enum Suit
+	 * @param suit the suit to change this card to
 	 */
 	public void setSuit(Suit suit) {
 		this.suit = suit;
@@ -110,8 +109,7 @@ public class PokerCard extends PlayingCard {
 	/**
 	 * Sets the Rank of the card to one from Rank enum
 	 * 
-	 * @param rank
-	 *            from enum Rank
+	 * @param rank rank to change this card to
 	 */
 	public void setRank(Rank rank) {
 		this.rank = rank;
