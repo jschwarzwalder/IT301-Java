@@ -16,10 +16,25 @@ public class Card {
 		 *
 		 */
 		public enum Suit {
-			HEARTS(Red), 
-			DIAMONDS(Red), 
-			CLUBS(Black), 
-			SPADES(Black);
+			HEARTS("Red"), 
+			DIAMONDS("Red"), 
+			CLUBS("Black"), 
+			SPADES("Black");
+			
+			private final String color;
+
+			Suit(String color) {
+				this.color = color;
+			}
+
+			/**
+			 * Returns the String value of the current color of the card
+			 * 
+			 * @return String The current color of card
+			 */
+			public String getColor() {
+				return color;
+			}
 		};
 
 		/**
@@ -51,6 +66,11 @@ public class Card {
 				this.value = value;
 			}
 
+			/**
+			 * Returns the int value of the value of the card
+			 * 
+			 * @return int The value of card
+			 */
 			public int getValue() {
 				return value;
 			}

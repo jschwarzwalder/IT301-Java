@@ -28,9 +28,9 @@ public class PlayingCard {
 	}
 	
 	/**
-	 * Returns the int value of the current color of the card
+	 * Returns the String value of the current color of the card
 	 * 
-	 * @return int The current color of card
+	 * @return String The current color of card
 	 */
 	public String getColor() {
 		return color;
