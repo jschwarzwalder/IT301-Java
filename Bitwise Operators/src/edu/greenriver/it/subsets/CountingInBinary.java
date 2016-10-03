@@ -11,22 +11,21 @@ public class CountingInBinary {
 	
 	public static void printBinary(int number, int howManyBits) {
 		//for loop 
-		for(int i = howManyBits - 1 ; i >= 0; i--){
+		String binary = "";
+		for(int i = 0; i < howManyBits; i++){
 			int mask = (int) Math.pow(2, i);
 			int result = number & mask;
 			
 			if (result == 0){ //the bit is "off" 
-				System.out.print("0");
+				//System.out.print("0");
+				binary = "0" + binary;
 			} else { //the bit is "on"
-				System.out.print("1");
+				binary = "1" + binary;
 			}
 		}
 		
-		//print number in binary
-		int mask = 1;
-		
 		
 		//print new line
-		System.out.println();
+		System.out.println(binary);
 	}
 }
