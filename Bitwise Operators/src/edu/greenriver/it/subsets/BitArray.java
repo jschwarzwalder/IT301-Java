@@ -14,15 +14,32 @@ public class BitArray {
 	
 	//methods...
 	public void setBoolean(int position, boolean value){
+		doubleCheckBounds(position);
+		
+		if (value == true){
+			int mask = (int) Math.pow(2, position);
+			int result = data | mask;
+			
+			data = result;
+					
+		} else {
+			//get our mask
+			int mask = (int) Math.pow(2, position);
+			
+			//invert
+			mask = ~mask;
+			
+			int result = data & mask;
+			data = result;
+			
+			
+		}
 		
 		
 	}
 	
 	public boolean getBoolean(int position){
-		//preconditions (must be true before you begin)
-		if (position < 0 || position > MAX_BITS - 1){
-			throw new IllegalArgumentException("Invalid bit position given");
-		}
+		doubleCheckBounds(position);
 		
 		
 		//mask out the bit at the "position" given
@@ -36,6 +53,13 @@ public class BitArray {
 			return true;	
 		} else {
 			return false;
+		}
+	}
+
+	private void doubleCheckBounds(int position) {
+		//preconditions (must be true before you begin)
+		if (position < 0 || position > MAX_BITS - 1){
+			throw new IllegalArgumentException("Invalid bit position given");
 		}
 	}
 
