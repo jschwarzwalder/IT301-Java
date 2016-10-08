@@ -103,10 +103,10 @@ public class Employee {
 		this.hireDate = hireDate;
 	}
 
-	/** 
+	/**
 	 * Returns String of information about Employee
 	 * 
-	 * @return  String employee's full name, rating, and hire date
+	 * @return String employee's full name, rating, and hire date
 	 * 
 	 */
 	@Override
