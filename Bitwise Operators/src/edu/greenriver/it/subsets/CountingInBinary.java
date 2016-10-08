@@ -1,6 +1,11 @@
 package edu.greenriver.it.subsets;
 
 public class CountingInBinary {
+	private static String[] balls =  new String[] {"blue", "red", "white"};
+	
+	
+
+	
 	
 	public static void main(String[] args){
 		//print out 0-7 in binary
@@ -28,7 +33,7 @@ public class CountingInBinary {
 		System.out.println();
 	}
 	
-	public static void printBallSubsets(int number, int howManyBits) {
+	public static void printBallSubset(int number, int howManyBits) {
 		
 		//for loop 
 		for(int i = howManyBits - 1 ; i >= 0; i--){
