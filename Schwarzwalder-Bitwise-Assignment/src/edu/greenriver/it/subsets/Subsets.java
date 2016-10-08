@@ -6,13 +6,14 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 import edu.greenriver.it.employee.Employee;
 
 public class Subsets {
-	private static File employeeFile = new File("employees.dat");
+	//private static File employeeFile = new File("employees.dat");
+	//private static File employeeFile = new File("more_employees.dat");
+	private static File employeeFile = new File("even_more_employees.dat");
 	
 	public static void main(String[] args) {
 		// save teams with scores greater than 20
@@ -25,7 +26,12 @@ public class Subsets {
 
 		// enumerate all subsets of employees 
 		for (int i = 0; i < Math.pow(2, employees.size()); i ++ ){
+			//Team Score
 			int teamRating = 0;
+			
+			//Team Members
+			ArrayList<Employee> team = new ArrayList<Employee>();
+			
 			//store index of employee
 			int index = 0;
 			//set the mask for each bit 
@@ -33,13 +39,12 @@ public class Subsets {
 				int maskCheck = i & mask;
 				//if employee in that combination, add rating 
 				if (maskCheck > 0){
+					//add Rating to Team Rating
 					Employee teammember = employees.get(index);
 					teamRating += teammember.getEmployeeRating();
 					
-					//if team collective scores over 20 move to next combination
-					if (teamRating > 20){
-						break;
-					}
+					//add Employee to team
+					team.add(teammember);
 				}
 				
 				//increase index
@@ -51,7 +56,24 @@ public class Subsets {
 			// rating above 20
 			if (teamRating > 20) {
 				
-				//printTeam(i, teamRating);
+				System.out.println("Team found (score: " + teamRating + ")");
+				
+				for (int j = 0; j < team.size(); j++){
+					//Get employee 
+					Employee teammember = team.get(j);
+					
+					//print out employee's name
+					System.out.print(teammember.getFullName());
+					System.out.print(" - ");
+					
+					//print out employee's rating
+					System.out.print(teammember.getEmployeeRating());
+					System.out.println();
+				
+				}
+				
+				//line break between teams
+				System.out.println();
 				
 			}
 		}
@@ -93,9 +115,11 @@ public class Subsets {
 				
 				//add employee to ArrayList
 				employees.add(scannedEmployee);
-				System.out.println(scannedEmployee);
-							
+				//System.out.println(scannedEmployee);
+				
 			}
+			
+			scan.close();
 			
 		} catch (FileNotFoundException e) {
 			// If file not found print call stack

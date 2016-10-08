@@ -12,6 +12,7 @@ public class SchwarzwalderTestBitwise {
 	 */
 	public static void main(String[] args) {
 		Subsets.loadEmployees();
+		Subsets.saveTeams();
 	}
 
 }
