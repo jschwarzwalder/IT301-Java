@@ -23,15 +23,46 @@ public class Subsets {
 		// load employee objects and then query them
 		ArrayList<Employee> employees = loadEmployees();
 
-		// enumerate all subsets of employees and print
-		// any teams found with a collective employee
-		// rating above 20
+		// enumerate all subsets of employees 
+		for (int i = 0; i < Math.pow(2, employees.size()); i ++ ){
+			int teamRating = 0;
+			//store index of employee
+			int index = 0;
+			//set the mask for each bit 
+			for (int mask= 1; mask < Math.pow(2, employees.size()); mask*=2) {
+				int maskCheck = i & mask;
+				//if employee in that combination, add rating 
+				if (maskCheck > 0){
+					Employee teammember = employees.get(index);
+					teamRating += teammember.getEmployeeRating();
+					
+					//if team collective scores over 20 move to next combination
+					if (teamRating > 20){
+						break;
+					}
+				}
+				
+				//increase index
+				index += 1;
+				
+			}
+			
+			// and print any teams found with a collective employee
+			// rating above 20
+			if (teamRating > 20) {
+				
+				//printTeam(i, teamRating);
+				
+			}
+		}
+		
+		
 	}
 	
 	/**
 	 * Adds Employee data from file to employee Array List
 	 * 
-	 * @return ArrayList<Employee> of Employees from employeeFile
+	 * @return ArrayList<Employee> of Employees from employee 
 	 * 
 	 */
 	public static ArrayList<Employee> loadEmployees() {
@@ -76,4 +107,6 @@ public class Subsets {
 
 		return employees;
 	}
+
+	
 }
