@@ -1,3 +1,10 @@
+/*
+ * Jami Schwarzwalder
+ * 10/8/2016
+ * Subsets.java
+ * This file builds the Teams!
+ */
+
 package edu.greenriver.it.subsets;
 
 import java.io.File;

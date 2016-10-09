@@ -1,3 +1,10 @@
+/*
+ * Jami Schwarzwalder
+ * 10/8/2016
+ * Employee.java
+ * This file stored Employee information!
+ */
+
 package edu.greenriver.it.employee;
 
 import java.util.Date;
