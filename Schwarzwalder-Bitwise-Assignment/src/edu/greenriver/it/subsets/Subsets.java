@@ -30,7 +30,7 @@ public class Subsets {
 	// private static File employeeFile = new File("even_more_employees.dat");
 
 	/**
-	 * This will begin the process to builds a list of potential teams
+	 * This will begin the process to build a list of potential teams
 	 * 
 	 */
 	public static void main(String[] args) {

@@ -25,7 +25,7 @@ public class Employee {
 	/**
 	 * Returns first name of Employee
 	 * 
-	 * @return Employees First Name
+	 * @return Employee's First Name
 	 * 
 	 */
 	public String getFirstName() {
@@ -67,7 +67,7 @@ public class Employee {
 	/**
 	 * Returns first and last name of Employee
 	 * 
-	 * @return Employees Full Name
+	 * @return Employee's Full Name
 	 * 
 	 */
 	public String getFullName() {
@@ -77,7 +77,7 @@ public class Employee {
 	/**
 	 * Returns number Rating of Employee
 	 * 
-	 * @return Employees Rating
+	 * @return Employee's Rating
 	 * 
 	 */
 	public int getEmployeeRating() {
@@ -88,7 +88,7 @@ public class Employee {
 	 * Assigns number Rating of Employee
 	 * 
 	 * @param employeeRating
-	 *            Employees Rating
+	 *            Employee's Rating
 	 * 
 	 */
 	public void setEmployeeRating(int employeeRating) {
