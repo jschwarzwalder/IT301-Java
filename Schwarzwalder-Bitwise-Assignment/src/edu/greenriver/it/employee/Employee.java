@@ -9,6 +9,12 @@ package edu.greenriver.it.employee;
 
 import java.util.Date;
 
+/**
+ * This class represents an employee
+ *
+ * @author Jami Schwarzwalder
+ * @version 1.1
+ */
 public class Employee {
 
 	private String firstName;
@@ -19,7 +25,7 @@ public class Employee {
 	/**
 	 * Returns first name of Employee
 	 * 
-	 * @return String Employees First Name
+	 * @return Employees First Name
 	 * 
 	 */
 	public String getFirstName() {
@@ -30,7 +36,7 @@ public class Employee {
 	 * Assigns First Name of Employee
 	 * 
 	 * @param firstName
-	 *            String employee's first name
+	 *            employee's first name
 	 * 
 	 */
 	public void setFirstName(String firstName) {
@@ -40,7 +46,7 @@ public class Employee {
 	/**
 	 * Returns last name of Employee
 	 * 
-	 * @return String Employees Last Name
+	 * @return Employee's Last Name
 	 * 
 	 */
 	public String getLastName() {
@@ -51,7 +57,7 @@ public class Employee {
 	 * Assigns Last Name of Employee
 	 * 
 	 * @param firstName
-	 *            String employee's last name
+	 *            employee's last name
 	 * 
 	 */
 	public void setLastName(String lastName) {
@@ -61,7 +67,7 @@ public class Employee {
 	/**
 	 * Returns first and last name of Employee
 	 * 
-	 * @return String Employees Full Name
+	 * @return Employees Full Name
 	 * 
 	 */
 	public String getFullName() {
@@ -71,7 +77,7 @@ public class Employee {
 	/**
 	 * Returns number Rating of Employee
 	 * 
-	 * @return int Employees Rating
+	 * @return Employees Rating
 	 * 
 	 */
 	public int getEmployeeRating() {
@@ -82,7 +88,7 @@ public class Employee {
 	 * Assigns number Rating of Employee
 	 * 
 	 * @param employeeRating
-	 *            int Employees Rating
+	 *            Employees Rating
 	 * 
 	 */
 	public void setEmployeeRating(int employeeRating) {
@@ -92,7 +98,7 @@ public class Employee {
 	/**
 	 * Returns Hire Date of Employee
 	 * 
-	 * @return Date employee hired
+	 * @return Date employee was hired
 	 * 
 	 */
 	public Date getHireDate() {
@@ -113,7 +119,7 @@ public class Employee {
 	/**
 	 * Returns String of information about Employee
 	 * 
-	 * @return String employee's full name, rating, and hire date
+	 * @return employee's full name, rating, and hire date
 	 * 
 	 */
 	@Override

@@ -17,17 +17,31 @@ import java.util.Scanner;
 
 import edu.greenriver.it.employee.Employee;
 
+/**
+ * Builds and Saves Employee Teams
+ *
+ * @author Jami Schwarzwalder
+ * @version 1.1
+ */
 public class Subsets {
 	private static final int COLLECTIVE_SCORE_THRESHOLD = 20;
 	private static File employeeFile = new File("employees.dat");
 	// private static File employeeFile = new File("more_employees.dat");
 	// private static File employeeFile = new File("even_more_employees.dat");
 
+	/**
+	 * This will begin the process to builds a list of potential teams
+	 * 
+	 */
 	public static void main(String[] args) {
 		// save teams with scores greater than 20
 		saveTeams();
 	}
 
+	/**
+	 * Builds a List of potential teams
+	 * 
+	 */
 	public static void saveTeams() {
 		// load employee objects and then query them
 		ArrayList<Employee> employees = loadEmployees();
@@ -91,7 +105,7 @@ public class Subsets {
 	/**
 	 * Adds Employee data from file to employee Array List
 	 * 
-	 * @return ArrayList<Employee> of Employees from employee
+	 * @return List of Employees from employee
 	 * 
 	 */
 	public static ArrayList<Employee> loadEmployees() {

@@ -9,10 +9,17 @@ package edu.greenriver.it.schwarzwaldertest;
 
 import edu.greenriver.it.subsets.Subsets;
 
+
+/**
+ * This class tests Employee and Subsets Classes
+ *
+ * @author Jami Schwarzwalder
+ * @version 1.1
+ */
 public class SchwarzwalderTestBitwise {
 
 	/**
-	 * Tests Subsets.java
+	 * Loads Employees and Creates teams
 	 * 
 	 * 
 	 * 
