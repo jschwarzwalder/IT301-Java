@@ -2,7 +2,7 @@
  * Jami Schwarzwalder
  * Oct 22, 2016
  * CountListThread.java
- * Stores the name of a file in your "lists" directory
+ * Counts the number of lines in given file.
  */
 package edu.it.greenriver.liststhread;
 
@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Stores the name of a file in your "lists" directory
+ * Counts the number of lines in given file.
  *
  * @author Jami Schwarzwalder
  * @version 1.1
@@ -19,11 +19,22 @@ import java.util.Scanner;
 public class CountListThread extends Thread {
 
 	private String listName;
+	private int lineCount = 0;
 
+	/**
+	 * Creates a new CountListThread
+	 *
+	 * @param listName
+	 */
 	public CountListThread(String listName) {
 		this.listName = listName;
 	}
 
+	/**
+	 * Counts the number of lines in given file.
+	 * 
+	 * @see java.lang.Thread#run()
+	 */
 	@Override
 	public void run() {
 
@@ -33,19 +44,31 @@ public class CountListThread extends Thread {
 		try {
 			fileScanner = new Scanner(fileToRead);
 
-			int numOfLines = 0;
+			
 			while (fileScanner.hasNextLine()) {
 
 				fileScanner.nextLine();
-				numOfLines += 1;
+				lineCount += 1;
 
 			}
 
-			System.out.println(listName + " : " + numOfLines);
+			//System.out.println(listName + " : " + lineCount);
 			fileScanner.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
+
+	
+	/**
+	 * Returns the number of lines
+	 * 
+	 * @return number of lines in the file scanned
+	 */
+	public int getLineCount() {
+		return lineCount;
+	}
+
+
 }

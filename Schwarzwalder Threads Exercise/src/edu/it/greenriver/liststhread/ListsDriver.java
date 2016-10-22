@@ -39,9 +39,36 @@ public class ListsDriver {
 		//Count number of lines in each file
 		File lists_directory = new File("lists/");
 		String[] fileNames = lists_directory.list();
+		CountListThread[] lineCountThreads = new CountListThread[fileNames.length];
 		
-		for (int i = 0; i < fileNames.length; i++){
-			new CountListThread("lists/" + fileNames[i]).start();
+		//start a thread for each of the files to count the lines
+		for (int i = 0; i < lineCountThreads.length; i++){
+			lineCountThreads[i] = new CountListThread("lists/" + fileNames[i]);
+			lineCountThreads[i].start();
 		}
+		
+		//join the lineCount Threads
+		for (int i = 0; i < lineCountThreads.length; i++){
+			try {
+				lineCountThreads[i].join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//print out the line counts
+		for (int i = 0; i < lineCountThreads.length; i++){
+			System.out.println("lists/" + fileNames[i] + ": " + lineCountThreads[i].getLineCount());
+		}
+		
+		//Search for word inside files
+		WordSearchThread[] wordSearchThreads = new WordSearchThread[fileNames.length];
+		
+		//start a thread for each of the files to count the lines
+		for (int i = 0; i < wordSearchThreads.length; i++){
+			wordSearchThreads[i] = new WordSearchThread("lists/" + fileNames[i], "banana");
+			wordSearchThreads[i].start();
+		}
+	
 	}
 }

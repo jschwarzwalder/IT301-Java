@@ -16,6 +16,12 @@ import java.io.File;
  */
 public class PrintFileThread extends Thread{
 	
+	
+	/**
+	 * Print out the names of all the files in the lists directory.
+	 * 
+	 * @see java.lang.Thread#run()
+	 */
 	public void run(){
 		File lists_directory = new File("lists/");
 		
