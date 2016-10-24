@@ -69,6 +69,30 @@ public class ListsDriver {
 			wordSearchThreads[i] = new WordSearchThread("lists/" + fileNames[i], "banana");
 			wordSearchThreads[i].start();
 		}
-	
+		
+		//Adds each line of the file to the shared data
+		ReadWordsThread[] readWordsThreads = new ReadWordsThread[fileNames.length];
+		
+		//start a thread for each of the files to count the lines
+		for (int i = 0; i < readWordsThreads.length; i++){
+			readWordsThreads[i] = new ReadWordsThread("lists/" + fileNames[i]);
+			readWordsThreads[i].start();
+		}
+		
+		//pause execution on the main thread until all secondary threads have completed.
+		for (int i = 0; i < readWordsThreads.length; i++){
+			try {
+				readWordsThreads[i].join();
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
+		}
+		
+		// Write a final loop that uses a PrintWriter object to write the
+		// contents of your shared data to a file called master_list.txt.
+		
+		
+
 	}
 }
