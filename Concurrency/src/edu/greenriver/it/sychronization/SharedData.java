@@ -8,7 +8,9 @@ public class SharedData {
 	}
 	
 	public void increment(){
-		count++;
+		synchronized (this){
+			count++; //alter our data
+		}
 	}
 
 	public int getCount() {
