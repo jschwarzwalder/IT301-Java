@@ -14,11 +14,6 @@ import java.util.ArrayList;
  * @author Jami Schwarzwalder
  * @version 1.1
  */
-/**
- *
- * @author Jami Schwarzwalder
- * @version 1.1
- */
 public class SharedData
 {
     //create a static array list field here...
@@ -31,8 +26,10 @@ public class SharedData
      */
     public static void add(String word)
     {	
-    	//add word to the array list
-    	wordsFromFile.add(word);
+    	synchronized(System.out){
+	    	//add word to the array list
+	    	wordsFromFile.add(word);
+    	}
     }
 
     /**
@@ -42,8 +39,10 @@ public class SharedData
      */
     public static int wordPhraseTotal()
     {
-        //return the number of elements in the array list
-    	return wordsFromFile.size();
+    	synchronized(System.out){
+	        //return the number of elements in the array list
+	    	return wordsFromFile.size();
+    	}
     }
 
     /**
@@ -53,8 +52,10 @@ public class SharedData
      * @return String from array at index given
      */
     public static String getWordPhrase(int position)
-    {
-        //returns the element at index "position" in the array list
-    	return wordsFromFile.get(position);
+    {	
+    	synchronized(System.out){
+	        //returns the element at index "position" in the array list
+	    	return wordsFromFile.get(position);
+    	}
     }
 }
