@@ -7,11 +7,18 @@ public class SynchronizationDriver {
 		SharedData data = new SharedData();
 		
 		//create and start my thread
-		CounterThread thread = new CounterThread(data);
-		thread.start();
+		CounterThread[] threads = {new CounterThread(data),
+									new CounterThread(data),
+									new CounterThread(data) };
+		
+		for (int i = 0; i < threads.length; i++){
+			threads[i].start();
+		}
 		
 		//will wait for our secondary thread to complete
-		thread.join();
+		for (int i = 0; i < threads.length; i++){
+			threads[i].join();
+		}
 		
 		//print the data in shared data
 		System.out.println(data.getCount());
