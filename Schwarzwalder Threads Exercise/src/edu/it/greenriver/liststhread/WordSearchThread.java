@@ -41,7 +41,7 @@ public class WordSearchThread extends Thread {
 	 */
 	public void run(){
 		File fileToRead = new File(wordList);
-		Scanner fileScanner;
+		Scanner fileScanner = null;
 		try {
 			fileScanner = new Scanner(fileToRead);
 			while (fileScanner.hasNextLine()) {
@@ -51,10 +51,14 @@ public class WordSearchThread extends Thread {
 				}
 			}
 
-			fileScanner.close();
+			
 		} catch (FileNotFoundException e) {
 			
 			e.printStackTrace();
+		} finally {
+			if (fileScanner != null){
+				fileScanner.close();
+			}
 		}
 		
 	}

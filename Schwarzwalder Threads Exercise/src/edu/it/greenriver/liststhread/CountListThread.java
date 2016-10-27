@@ -40,7 +40,7 @@ public class CountListThread extends Thread {
 
 		// count the lines in the file "listName"
 		File fileToRead = new File(listName);
-		Scanner fileScanner;
+		Scanner fileScanner = null;
 		try {
 			fileScanner = new Scanner(fileToRead);
 
@@ -57,6 +57,10 @@ public class CountListThread extends Thread {
 		} catch (FileNotFoundException e) {
 			
 			e.printStackTrace();
+		} finally {
+			if (fileScanner != null){
+				fileScanner.close();
+			}
 		}
 	}
 

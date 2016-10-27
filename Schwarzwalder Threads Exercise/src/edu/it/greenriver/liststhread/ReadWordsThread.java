@@ -29,7 +29,7 @@ public class ReadWordsThread extends Thread {
 	 */
 	public void run(){
 		File fileToRead = new File(fileName);
-		Scanner fileScanner;
+		Scanner fileScanner = null;
 		try {
 			fileScanner = new Scanner(fileToRead);
 			
@@ -38,10 +38,14 @@ public class ReadWordsThread extends Thread {
 				SharedData.add(fileScanner.nextLine());
 			}
 
-			fileScanner.close();
+			
 		} catch (FileNotFoundException e) {
 			
 			e.printStackTrace();
+		} finally {
+			if (fileScanner != null){
+				fileScanner.close();
+			}
 		}
 		
 	}
