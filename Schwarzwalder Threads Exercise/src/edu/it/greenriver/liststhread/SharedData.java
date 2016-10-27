@@ -26,7 +26,7 @@ public class SharedData
      */
     public static void add(String word)
     {	
-    	synchronized(System.out){
+    	synchronized(wordsFromFile){
 	    	//add word to the array list
 	    	wordsFromFile.add(word);
     	}
@@ -39,7 +39,7 @@ public class SharedData
      */
     public static int wordPhraseTotal()
     {
-    	synchronized(System.out){
+    	synchronized(wordsFromFile){
 	        //return the number of elements in the array list
 	    	return wordsFromFile.size();
     	}
@@ -53,7 +53,7 @@ public class SharedData
      */
     public static String getWordPhrase(int position)
     {	
-    	synchronized(System.out){
+    	synchronized(wordsFromFile){
 	        //returns the element at index "position" in the array list
 	    	return wordsFromFile.get(position);
     	}
