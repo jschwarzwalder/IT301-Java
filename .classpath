@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="output" path="out/production/IT301-Java"/>
+	<classpathentry kind="src" path="Schwarzwalder Threads Assignment"/>
+	<classpathentry kind="output" path="out/production/IT301-Java/Schwarzwalder Threas Assignment"/>
 </classpath>
