@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import edu.greenriver.it.console.Console;
 import edu.greenriver.it.userrecords.User;
 import edu.greenriver.it.userrecords.UserRecords;
 
@@ -34,10 +35,14 @@ public class LoadListThread extends Thread {
 
 	public void run() {
 		File fileToRead = new File(listName);
+		Console.print("Scanning " + listName);
 		Scanner fileScanner = null;
+		int recordCount = 0;
 		try {
 			fileScanner = new Scanner(fileToRead);
-
+			
+			
+			
 			// remove header
 			fileScanner.nextLine();
 
@@ -62,6 +67,9 @@ public class LoadListThread extends Thread {
 				newUser.setIsPreferredUser(Boolean.parseBoolean(userData[9].trim()));
 
 				userRecords.addUser(newUser);
+				
+				recordCount ++;
+				
 
 			}
 
@@ -73,6 +81,8 @@ public class LoadListThread extends Thread {
 				fileScanner.close();
 			}
 		}
+		
+		Console.print("Completed scan of "+ listName + ", loaded"+ recordCount  +" records");
 
 	}
 

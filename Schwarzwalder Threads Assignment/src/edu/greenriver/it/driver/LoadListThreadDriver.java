@@ -6,7 +6,9 @@
  */
 package edu.greenriver.it.driver;
 
+import edu.greenriver.it.console.Console;
 import edu.greenriver.it.list.LoadListThread;
+import edu.greenriver.it.list.SearchList;
 import edu.greenriver.it.userrecords.UserRecords;
 
 /**
@@ -26,13 +28,38 @@ public class LoadListThreadDriver {
 	 */
 	public static void main(String[] args) throws InterruptedException {
 		UserRecords records = new UserRecords();
-		String fileName = "users_list_5.csv";
+		SearchList listOfUsers = new SearchList();
 
-		LoadListThread user_list_thread_5 = new LoadListThread(fileName, records);
-		user_list_thread_5.run();
-		user_list_thread_5.join();
+		for (int i = 1; i <= 5; i++) {
+
+			String fileName = "users_list_" + i + ".csv";
+
+			LoadListThread user_list_thread = new LoadListThread(fileName, records);
+			user_list_thread.run();
+			user_list_thread.join();
+
+			
+
+		}
+
+		Console.print("1. Load user list");
+		Console.print("2. Search for user");
+		Console.print("3. Search for multiple users");
+		Console.print("99. Exit");
 		
-		System.out.println(records.toString());
+		int choice = Console.getInt("Enter a choice:");
+		
+		if (choice == 1){
+			String listName = Console.getString("Enter a list name: ");
+			
+		} else if (choice == 2){
+			String nameToSearchFor = Console.getString("Enter a full name: ");
+			listOfUsers.search(nameToSearchFor);
+			
+		} else if (choice == 3){
+			String multipleNamesToSearch = Console.getString("Enter several full names separated by commas: ");
+			listOfUsers.searchMultiple(multipleNamesToSearch);
+		}
 		
 		
 

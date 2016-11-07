@@ -35,12 +35,12 @@ public class LookupThread extends Thread {
 			if (records.containsUser(nameToSearch)) {
 
 				// The thread should print out the User's toString() method or
-				System.out.println(records.getUser(nameToSearch).toString());
+				System.out.println("User record found: " + records.getUser(nameToSearch).toString());
 			} else {
 
 				// The thread should print out "user not found" if the user
 				// record is not in the map.
-				System.out.println("User not found");
+				System.out.println("User not found...");
 			}
 
 		}
