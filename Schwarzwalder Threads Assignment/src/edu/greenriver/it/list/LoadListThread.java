@@ -4,7 +4,7 @@
  * LoadListThead.java
  * Reads User data from CSV File
  */
-package edu.greenriver.it.loadlist;
+package edu.greenriver.it.list;
 
 import java.io.File;
 import java.io.FileNotFoundException;

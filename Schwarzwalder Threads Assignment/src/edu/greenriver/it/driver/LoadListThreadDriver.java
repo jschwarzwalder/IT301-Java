@@ -6,7 +6,7 @@
  */
 package edu.greenriver.it.driver;
 
-import edu.greenriver.it.loadlist.LoadListThread;
+import edu.greenriver.it.list.LoadListThread;
 import edu.greenriver.it.userrecords.UserRecords;
 
 /**
@@ -15,6 +15,8 @@ import edu.greenriver.it.userrecords.UserRecords;
  * @version 1.1
  */
 public class LoadListThreadDriver {
+
+	
 
 	/**
 	 * Test Load List Thread
@@ -31,6 +33,8 @@ public class LoadListThreadDriver {
 		user_list_thread_5.join();
 		
 		System.out.println(records.toString());
+		
+		
 
 	}
 

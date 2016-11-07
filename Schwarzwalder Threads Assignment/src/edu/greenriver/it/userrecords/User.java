@@ -21,6 +21,23 @@ public class User {
 	private String referredFrom;
 	private Boolean isPreferredUser;
 
+	public User (){
+		
+	}
+	
+	
+	public User(String firstName, String lastName, char sexAtBirth, String email, String street, String city, String state, String zipcode, String referredFrom,
+			Boolean isPreferredUser) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.sexAtBirth = sexAtBirth;
+		this.email = email;
+		this.address = new Address(street, city, state, zipcode);
+		this.referredFrom = referredFrom;
+		this.isPreferredUser = isPreferredUser;
+	}
+
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -56,16 +73,15 @@ public class User {
 	public void setIsPreferredUser(Boolean isPreferredUser) {
 		this.isPreferredUser = isPreferredUser;
 	}
-	
-	public String toString (){
+
+	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(firstName);
 		builder.append(' ');
 		builder.append(lastName);
 		builder.append(' ');
 		builder.append(email);
-		if (isPreferredUser)
-		{
+		if (isPreferredUser) {
 			builder.append(" preferred");
 		}
 		return builder.toString();
@@ -86,7 +102,5 @@ public class User {
 		}
 
 	}
-	
-
 
 }
