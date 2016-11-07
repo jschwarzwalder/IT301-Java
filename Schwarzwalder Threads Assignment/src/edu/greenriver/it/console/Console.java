@@ -3,24 +3,30 @@ package edu.greenriver.it.console;
 import java.util.Scanner;
 
 /**
- * Helper class for reading and writing to the Java console. * * @author Josh
- * Archer * @version 1.0
+ * Helper class for reading and writing to the Java console.
+ * 
+ * @author Josh Archer
+ * @version 1.0
  */
 public class Console {
 	private static Scanner console = new Scanner(System.in);
 
 	/**
-	 * * Prints a message to the Java console. * * @param message the message to
-	 * be printed
+	 * * Prints a message to the Java console.
+	 * 
+	 * @param message
+	 *            the message to be printed
 	 */
 	public static void print(String message) {
 		System.out.println(message);
 	}
 
 	/**
-	 * * Retrieves a String value from the Java console. * * @param prompt a
-	 * prompt for the user to read before * entering input * @return a String
-	 * value
+	 * * Retrieves a String value from the Java console. *
+	 * 
+	 * @param prompt
+	 *            a prompt for the user to read before entering input
+	 * @return a String value
 	 */
 	public static String getString(String prompt) {
 		System.out.println(prompt + ": ");
@@ -28,9 +34,11 @@ public class Console {
 	}
 
 	/**
-	 * * Retrieves an int value from the Java console. * * @param prompt a
-	 * prompt for the user to read before * entering input * @return an int
-	 * value
+	 * * Retrieves an int value from the Java console.
+	 * 
+	 * @param prompt
+	 *            a prompt for the user to read before * entering input
+	 * @return an int value
 	 */
 	public static int getInt(String prompt) {
 		System.out.println(prompt + ": ");
@@ -44,10 +52,29 @@ public class Console {
 	}
 
 	/**
+	 * * Retrieves an char value from the Java console.
 	 * 
-	 * Retrieves a double value from the Java console. * * @param prompt a
-	 * prompt for the user to read before * entering input * @return a double
-	 * value
+	 * @param prompt
+	 *            a prompt for the user to read before entering input
+	 * @return an char value
+	 */
+	public static char getChar(String prompt) {
+		String response = "";
+		response = getString(prompt);
+		while (response.length() != 1) {
+			print("Please eneter a valid char: ");
+			response = getString(prompt);
+		}
+		return response.charAt(0);
+	}
+
+	/**
+	 * 
+	 * Retrieves a double value from the Java console.
+	 * 
+	 * @param prompt
+	 *            a prompt for the user to read before entering input
+	 * @return a double value
 	 */
 	public static double getDouble(String prompt) {
 		System.out.println(prompt + ": ");
@@ -61,9 +88,11 @@ public class Console {
 	}
 
 	/**
-	 * * Retrieves a boolean value from the Java console. * * @param prompt a
-	 * prompt for the user to read before * entering input * @return a boolean
-	 * value
+	 * * Retrieves a boolean value from the Java console.
+	 * 
+	 * @param prompt
+	 *            a prompt for the user to read before entering input
+	 * @return a boolean value
 	 */
 	public static boolean getBoolean(String prompt) {
 		System.out.println(prompt + ": ");

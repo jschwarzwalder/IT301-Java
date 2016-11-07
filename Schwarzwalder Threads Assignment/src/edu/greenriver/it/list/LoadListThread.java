@@ -28,11 +28,22 @@ public class LoadListThread extends Thread {
 	private String listName;
 	private UserRecords userRecords;
 
+	/**
+	 * Creates a new LoadListThread
+	 *
+	 * @param listName name of list to load
+	 * @param userRecords list of users
+	 */
 	public LoadListThread(String listName, UserRecords userRecords) {
 		this.listName = "user_lists/" + listName;
 		this.userRecords = userRecords;
 	}
 
+	/**
+	 * Reads in file to userRecords
+	 * 
+	 * @see java.lang.Thread#run()
+	 */
 	public void run() {
 		File fileToRead = new File(listName);
 		Console.print("Scanning " + listName);
@@ -82,7 +93,7 @@ public class LoadListThread extends Thread {
 			}
 		}
 		
-		Console.print("Completed scan of "+ listName + ", loaded"+ recordCount  +" records");
+		Console.print("Completed scan of "+ listName + ", loaded "+ recordCount  +" records");
 
 	}
 

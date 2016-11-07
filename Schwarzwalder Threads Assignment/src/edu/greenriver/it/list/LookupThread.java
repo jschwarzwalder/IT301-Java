@@ -18,12 +18,24 @@ public class LookupThread extends Thread {
 	private SearchList searchList;
 	private UserRecords records;
 
+	/**
+	 * Creates a new LookupThread
+	 *
+	 * @param searchList the queue of names to be searched find
+	 * @param records the list of records to be searched
+	 */
 	public LookupThread(SearchList searchList, UserRecords records) {
 
 		this.searchList = searchList;
 		this.records = records;
 	}
 
+	/**
+	 * Performs searches while there are names in the queue.  
+	 * When queue is empty waits for new names.
+	 * 
+	 * @see java.lang.Thread#run()
+	 */
 	public void run() {
 		// infinite loop
 		while (true) {

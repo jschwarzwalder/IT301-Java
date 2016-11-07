@@ -52,6 +52,12 @@ public class UserRecords {
 		return users.get(fullName);
 	}
 
+	/**
+	 * Returns a readable String listing each User in User Records
+	 * 
+	 * @return
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		for (User user : users.values()) {
