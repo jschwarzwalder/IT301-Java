@@ -7,6 +7,11 @@
 package edu.greenriver.it.loadlist;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import edu.greenriver.it.userrecords.User;
+import edu.greenriver.it.userrecords.UserRecords;
 
 /**
  * Accepts a file using the CSV file format, 
@@ -18,18 +23,57 @@ import java.io.File;
  * @version 1.1
  */
 public class LoadListThead extends Thread {
-	
+
 	private String listName;
-	
-	public LoadListThead(String listName) {
+	private UserRecords userRecords;
+
+	public LoadListThead(String listName, UserRecords userRecords) {
 		this.listName = "user_lists/" + listName;
+		this.userRecords = userRecords;
 	}
 
+	public void run() {
+		File fileToRead = new File(listName);
+		Scanner fileScanner = null;
+		try {
+			fileScanner = new Scanner(fileToRead);
 
+			// remove header
+			fileScanner.nextLine();
 
-	public void run(){
-		File filetoRead = new File(listName);
-		
+			while (fileScanner.hasNextLine()) {
+
+				String userString = fileScanner.nextLine();
+
+				// use String.split()
+				String[] userData = userString.split(",");
+
+				// create user Object from line
+				User newUser = new User();
+				newUser.setFirstName(userData[0].trim());
+				newUser.setLastName(userData[1].trim());
+				newUser.setSexAtBirth(userData[2].trim().charAt(0));
+				newUser.setEmail(userData[3].trim());
+
+				// build new Address with street, city, state, and zipcode
+				newUser.setAddress(userData[4].trim(), userData[5].trim(), userData[6].trim(), userData[7].trim());
+
+				newUser.setReferredFrom(userData[8].trim());
+				newUser.setIsPreferredUser(Boolean.parseBoolean(userData[9].trim()));
+
+				userRecords.addUser(newUser);
+
+			}
+
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		} finally {
+			if (fileScanner != null) {
+				fileScanner.close();
+			}
+		}
+
 	}
 
 }
