@@ -4,7 +4,7 @@
  * User.java
  * User Records
  */
-package edu.greenriver.it.user_records;
+package edu.greenriver.it.userrecords;
 
 /**
  * User Records contains data about users
@@ -17,7 +17,7 @@ public class User {
 	private String lastName;
 	private char sexAtBirth;
 	private String email;
-	private String address;
+	private Address address;
 	private String referredFrom;
 	private Boolean isPreferredUser;
 
@@ -37,44 +37,40 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public char getSexAtBirth() {
-		return sexAtBirth;
-	}
-
 	public void setSexAtBirth(char sexAtBirth) {
 		this.sexAtBirth = sexAtBirth;
-	}
-
-	public String getEmail() {
-		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getReferredFrom() {
-		return referredFrom;
+	public void setAddress(String street, String city, String state, String zipcode) {
+		this.address = new Address(street, city, state, zipcode);
 	}
 
 	public void setReferredFrom(String referredFrom) {
 		this.referredFrom = referredFrom;
 	}
 
-	public Boolean getIsPreferredUser() {
-		return isPreferredUser;
-	}
-
 	public void setIsPreferredUser(Boolean isPreferredUser) {
 		this.isPreferredUser = isPreferredUser;
+	}
+
+	private class Address {
+		private String street;
+		private String city;
+		private String state;
+		private String zipcode;
+
+		public Address(String street, String city, String state, String zipcode) {
+
+			this.street = street;
+			this.city = city;
+			this.state = state;
+			this.zipcode = zipcode;
+		}
+
 	}
 
 }

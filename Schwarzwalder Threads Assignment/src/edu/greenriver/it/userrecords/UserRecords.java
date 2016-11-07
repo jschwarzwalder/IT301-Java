@@ -4,7 +4,7 @@
  * UserRecords.java
  * Map of all users
  */
-package edu.greenriver.it.user_records;
+package edu.greenriver.it.userrecords;
 
 import java.util.HashMap;
 import java.util.Map;
