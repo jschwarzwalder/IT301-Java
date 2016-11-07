@@ -56,6 +56,20 @@ public class User {
 	public void setIsPreferredUser(Boolean isPreferredUser) {
 		this.isPreferredUser = isPreferredUser;
 	}
+	
+	public String toString (){
+		StringBuilder builder = new StringBuilder();
+		builder.append(firstName);
+		builder.append(' ');
+		builder.append(lastName);
+		builder.append(' ');
+		builder.append(email);
+		if (isPreferredUser)
+		{
+			builder.append(" preferred");
+		}
+		return builder.toString();
+	}
 
 	private class Address {
 		private String street;
@@ -72,5 +86,7 @@ public class User {
 		}
 
 	}
+	
+
 
 }

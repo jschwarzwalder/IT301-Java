@@ -16,9 +16,8 @@ import java.util.Map;
  * @version 1.1
  */
 public class UserRecords {
-	
+
 	Map<String, User> users = new HashMap<String, User>();
-	
 
 	/**
 	 * Adds a new key/value pair to the map with full-name mapped to the User
@@ -27,8 +26,7 @@ public class UserRecords {
 	 * @param user
 	 */
 	public synchronized void addUser(User user) {
-		
-		
+
 		String fullName = user.getFirstName() + " " + user.getLastName();
 		users.put(fullName, user);
 	}
@@ -52,6 +50,17 @@ public class UserRecords {
 	 */
 	public synchronized User getUser(String fullName) {
 		return users.get(fullName);
+	}
+
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		for (User user : users.values()) {
+
+			stringBuilder.append(user.toString());
+			stringBuilder.append("\n");
+		}
+
+		return stringBuilder.toString();
 	}
 
 }

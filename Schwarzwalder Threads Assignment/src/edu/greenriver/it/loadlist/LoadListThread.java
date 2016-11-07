@@ -22,12 +22,12 @@ import edu.greenriver.it.userrecords.UserRecords;
  * @author Jami Schwarzwalder
  * @version 1.1
  */
-public class LoadListThead extends Thread {
+public class LoadListThread extends Thread {
 
 	private String listName;
 	private UserRecords userRecords;
 
-	public LoadListThead(String listName, UserRecords userRecords) {
+	public LoadListThread(String listName, UserRecords userRecords) {
 		this.listName = "user_lists/" + listName;
 		this.userRecords = userRecords;
 	}
