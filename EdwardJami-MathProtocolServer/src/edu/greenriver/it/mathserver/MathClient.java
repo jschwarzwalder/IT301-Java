@@ -13,9 +13,7 @@ public class MathClient extends Thread {
 			PrintWriter sendToServer = new PrintWriter(server.getOutputStream(), true);
 			BufferedReader getFromServer = new BufferedReader(new InputStreamReader(server.getInputStream()));
 
-			String nums = "10 2";
-			
-			//String[] numParts = nums.split(" ");
+			String nums = "200 300";
 			
 			sendToServer.println(nums);
 			

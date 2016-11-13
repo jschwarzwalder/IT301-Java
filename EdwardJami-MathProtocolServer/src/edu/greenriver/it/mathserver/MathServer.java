@@ -31,15 +31,7 @@ public class MathServer extends Thread {
 			PrintWriter sendToClient = new PrintWriter(client.getOutputStream(), true);
 
 			String line;
-			int num1 = 0;
-			int num2 = 0;
-			int sum = 0;
-			int diff = 0;
-			int prod = 0;
-			int quot = 0;
-			int mod = 0;
-			
-			
+				
 			while ((line = getFromClient.readLine()) != null) {
 				try{
 					String[] lineParts = line.split(" ");
@@ -49,20 +41,30 @@ public class MathServer extends Thread {
 					}
 					
 					else{
-						num1 = Integer.parseInt(lineParts[0]);
-						num2 = Integer.parseInt(lineParts[1]);
+						int num1 = Integer.parseInt(lineParts[0]);
+						int num2 = Integer.parseInt(lineParts[1]);
 						
-						sum = num1 + num2;
-						diff = num1 - num2;
-						prod = num1 * num2;
-						quot = num1 / num2;
-						mod = num1 % num2;
+						int add = num1 + num2;
+						int subtract = num1 - num2;
+						int multiply = num1 * num2;
+						int divide = 0;
+						int remainder = 0;
+						if (num2 != 0){
+							divide = num1 / num2;
+							remainder = num1 % num2;
+						} 
+							
 						
-						sendToClient.println(sum + " =  " + num1 + " + " + num2);
-						sendToClient.println(diff + " = " + num1 + " - " + num2);
-						sendToClient.println(prod + " = " + num1 + " * " + num2);
-						sendToClient.println(quot + " = " + num1 + " / " + num2);
-						sendToClient.println(mod + " = " + num1 + " % " + num2);
+						
+						sendToClient.println( num1 + " + " + num2 + " = " + add);							
+						sendToClient.println( num1 + " - " + num2 + " = " + subtract);
+						sendToClient.println( num1 + " * " + num2 + " = " + multiply);
+						if (num2 != 0){
+						sendToClient.println( num1 + " / " + num2 + " = " + divide);
+						sendToClient.println( num1 + " % " + num2 + " = " + remainder);
+						} else {
+							sendToClient.println("You cannot divide by 0");
+						}
 					}
 				}
 				
