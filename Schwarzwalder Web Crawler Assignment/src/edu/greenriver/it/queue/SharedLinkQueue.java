@@ -41,6 +41,7 @@ public class SharedLinkQueue {
 			if (linkQueue.size() < 50000) {
 				if (!seenUrls.contains(url)) {
 					linkQueue.add(url);
+					seenUrls.add(url);
 					linkQueue.notify();
 				}
 			} else {

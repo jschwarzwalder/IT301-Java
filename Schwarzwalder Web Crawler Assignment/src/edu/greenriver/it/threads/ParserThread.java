@@ -45,11 +45,11 @@ public class ParserThread extends Thread {
 			String pageText = pageList.getNextPage();
 
 			// search the page for all links in anchor (<a href="">) elements
-			Pattern pattern = Pattern.compile("href=\"((http:.*?)\"");
+			Pattern pattern = Pattern.compile("href=\"(http:.*?)\"");
 			Matcher matcher = pattern.matcher(pageText);
 
 			while (matcher.find()) {
-				String link = matcher.group(2);
+				String link = matcher.group(1);
 
 				// add each link found to the link queue
 				searchList.addLink(link);
@@ -61,7 +61,7 @@ public class ParserThread extends Thread {
 				String[] keywordsFound = pageText.split(keyword);
 
 				// keep track of how many keywords are encountered
-				numKeywordsFound += keywordsFound.length;
+				numKeywordsFound += keywordsFound.length - 1;
 			}
 
 		}

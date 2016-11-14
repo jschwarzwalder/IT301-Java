@@ -49,6 +49,8 @@ public class FetcherThread extends Thread {
 			
 			// pull a link from the link queue
 			String nextUrl = searchList.getNextLink();
+			
+			System.out.println("Visiting: " + nextUrl);
 
 			// download the (HTML) page text at the given URL
 			BufferedReader download = downloadPageContent(nextUrl);
@@ -98,7 +100,7 @@ public class FetcherThread extends Thread {
 				htmlPageContent.append(line);
 				line = download.readLine();
 			}
-			pageList.addPages(htmlPageContent.toString());
+			pageList.addPages(htmlPageContent.toString().toLowerCase());
 		} catch (IOException e) {
 			System.out.println(e.toString());
 			synchronized(FetcherThread.class){

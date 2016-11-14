@@ -71,7 +71,7 @@ public class WebCrawlerDriver {
 				// can look for when parsing documents.
 				// Your program should maintain a List of keywords that each
 				// consumer can access.
-				String keyword = Console.getString("Enter a keyword to search for");
+				String keyword = Console.getString("Enter a keyword to search for").toLowerCase();
 				if (!keywordsList.contains(keyword)) {
 					keywordsList.add(keyword);
 				}
