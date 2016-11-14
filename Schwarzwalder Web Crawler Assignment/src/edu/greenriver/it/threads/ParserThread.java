@@ -6,6 +6,7 @@
  */
 package edu.greenriver.it.threads;
 
+import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,8 +22,8 @@ public class ParserThread extends Thread {
 
 	private SharedLinkQueue searchList;
 	private SharedPageQueue pageList;
-	private String keyword;
-	private int numKeywordsFound;
+	private LinkedList<String> keywordList;
+	private static int numKeywordsFound = 0;
 
 	/**
 	 * Creates a new ParserThread
@@ -30,10 +31,11 @@ public class ParserThread extends Thread {
 	 * @param searchList
 	 * @param pageList
 	 */
-	public ParserThread(SharedLinkQueue searchList, SharedPageQueue pageList) {
+	public ParserThread(SharedLinkQueue searchList, SharedPageQueue pageList, LinkedList<String> keywordList) {
 
 		this.searchList = searchList;
 		this.pageList = pageList;
+		this.keywordList = keywordList;
 	}
 
 	public void run() {
@@ -55,12 +57,18 @@ public class ParserThread extends Thread {
 
 			// search the page for any keywords specified by the user of the web
 			// crawler (more on this later)
-			String[] keywordsFound = pageText.split(keyword);
+			for (String keyword : keywordList) {
+				String[] keywordsFound = pageText.split(keyword);
 
-			// keep track of how many keywords are encountered
-			numKeywordsFound = keywordsFound.length;
+				// keep track of how many keywords are encountered
+				numKeywordsFound += keywordsFound.length;
+			}
 
 		}
+	}
+
+	public static int getNumKeywordsFound() {
+		return numKeywordsFound;
 	}
 
 }

@@ -24,6 +24,19 @@ import edu.greenriver.it.queue.SharedPageQueue;
 public class FetcherThread extends Thread {
 	private SharedLinkQueue searchList;
 	private SharedPageQueue pageList;
+	private static int failedDownloads;
+	
+
+	/**
+	 * Creates a new FetcherThread
+	 *
+	 * @param searchList
+	 * @param pageList
+	 */
+	public FetcherThread(SharedLinkQueue searchList, SharedPageQueue pageList) {
+		this.searchList = searchList;
+		this.pageList = pageList;
+	}
 
 	/**
 	 * Performs searches while there are links in the queue. When queue is empty
@@ -33,7 +46,7 @@ public class FetcherThread extends Thread {
 	 */
 	public void run() {
 		while (true) {
-
+			
 			// pull a link from the link queue
 			String nextUrl = searchList.getNextLink();
 
@@ -47,6 +60,7 @@ public class FetcherThread extends Thread {
 			}
 
 		}
+		
 	}
 
 	private BufferedReader downloadPageContent(String nextUrl) {
@@ -55,6 +69,9 @@ public class FetcherThread extends Thread {
 			url = new URL(nextUrl);
 		} catch (MalformedURLException e1) {
 			System.out.println(e1.toString());
+			synchronized(FetcherThread.class){
+				failedDownloads ++;
+			}
 			return null;
 		}
 		
@@ -65,6 +82,9 @@ public class FetcherThread extends Thread {
 			download = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		} catch (IOException e1) {
 			System.out.println(e1.toString());
+			synchronized(FetcherThread.class){
+				failedDownloads ++;
+			}
 		}
 		return download;
 	}
@@ -81,7 +101,17 @@ public class FetcherThread extends Thread {
 			pageList.addPages(htmlPageContent.toString());
 		} catch (IOException e) {
 			System.out.println(e.toString());
+			synchronized(FetcherThread.class){
+				failedDownloads ++;
+			}
 		}
 	}
+
+	public static int getFailedDownloads() {
+		return failedDownloads;
+	}
+
+
+	
 
 }

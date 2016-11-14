@@ -33,19 +33,20 @@ public class SharedPageQueue {
 	 * @param pageText
 	 */
 	public void addPages(String pageText) {
-		if (pageQueue.size() < 50000) {
-			pageQueue.add(pageText);
-			pagesDownload++;
-			pageQueue.notify();
+		synchronized (pageQueue) {
+			if (pageQueue.size() < 50000) {
+				pageQueue.add(pageText);
+				pagesDownload++;
+				pageQueue.notify();
 
-		} else {
-			try {
-				pageQueue.wait();
-			} catch (InterruptedException e) {
-				System.out.println(e.toString());
+			} else {
+				try {
+					pageQueue.wait();
+				} catch (InterruptedException e) {
+					System.out.println(e.toString());
+				}
 			}
 		}
-
 	}
 
 	/**
@@ -58,30 +59,31 @@ public class SharedPageQueue {
 	 * @return a page from the queue
 	 */
 	public String getNextPage() {
-		if (pageQueue.isEmpty()){
-			try {
-				pageQueue.wait();
-				return getNextPage();
-			} catch (InterruptedException e) {
-				System.out.println(e.toString());
-				return getNextPage();
+		synchronized (pageQueue) {
+			if (pageQueue.isEmpty()) {
+				try {
+					pageQueue.wait();
+					return getNextPage();
+				} catch (InterruptedException e) {
+					System.out.println(e.toString());
+					return getNextPage();
+				}
+			}
+			if (pageQueue.size() > 0) {
+				String nextPage = pageQueue.remove(0);
+				pageQueue.notify();
+				return nextPage;
+
+			} else {
+				try {
+					pageQueue.wait();
+					return getNextPage();
+				} catch (InterruptedException e) {
+					System.out.println(e.toString());
+					return getNextPage();
+				}
 			}
 		}
-		if (pageQueue.size() > 0) {
-			String nextPage = pageQueue.remove(0);
-			pageQueue.notify();
-			return nextPage;
-
-		} else {
-			try {
-				pageQueue.wait();
-				return getNextPage();
-			} catch (InterruptedException e) {
-				System.out.println(e.toString());
-				return getNextPage();
-			}
-		}
-
 	}
 
 	/**
