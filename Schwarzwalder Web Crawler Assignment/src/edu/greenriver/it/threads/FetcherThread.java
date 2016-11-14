@@ -49,8 +49,6 @@ public class FetcherThread extends Thread {
 			
 			// pull a link from the link queue
 			String nextUrl = searchList.getNextLink();
-			
-			System.out.println("Visiting: " + nextUrl);
 
 			// download the (HTML) page text at the given URL
 			BufferedReader download = downloadPageContent(nextUrl);
