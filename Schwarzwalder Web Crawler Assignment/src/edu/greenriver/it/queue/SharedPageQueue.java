@@ -2,22 +2,23 @@
  * Jami Schwarzwalder
  * Nov 13, 2016
  * SharedPageQueue.java
- * [Description Here]
+ * Store list which has the text of a web document
  */
 package edu.greenriver.it.queue;
 
 import java.util.LinkedList;
 
 /**
+ * Store list which has the text of a web document
  *
  * @author Jami Schwarzwalder
  * @version 1.1
  */
 public class SharedPageQueue {
-	
+
 	LinkedList<String> pageQueue = new LinkedList<String>();
 	int pagesDownload = 0;
-	
+
 	/**
 	 * Adds a new page to the queue. The queue should have a maximum size of
 	 * 50000.
@@ -32,13 +33,17 @@ public class SharedPageQueue {
 	 * @param pageText
 	 */
 	public void addPages(String pageText) {
-		if (pageQueue.size() < 50000){
+		if (pageQueue.size() < 50000) {
 			pageQueue.add(pageText);
 			pagesDownload++;
-			notify();
-			
+			pageQueue.notify();
+
 		} else {
-			wait();
+			try {
+				pageQueue.wait();
+			} catch (InterruptedException e) {
+				System.out.println(e.toString());
+			}
 		}
 
 	}
@@ -53,14 +58,30 @@ public class SharedPageQueue {
 	 * @return a page from the queue
 	 */
 	public String getNextPage() {
-		if (pageQueue.size() > 0){
-			String nextPage = pageQueue.remove(0);
-			notify();
-			return nextPage;
-			
-		} else {
-			wait();
+		if (pageQueue.isEmpty()){
+			try {
+				pageQueue.wait();
+				return getNextPage();
+			} catch (InterruptedException e) {
+				System.out.println(e.toString());
+				return getNextPage();
+			}
 		}
+		if (pageQueue.size() > 0) {
+			String nextPage = pageQueue.remove(0);
+			pageQueue.notify();
+			return nextPage;
+
+		} else {
+			try {
+				pageQueue.wait();
+				return getNextPage();
+			} catch (InterruptedException e) {
+				System.out.println(e.toString());
+				return getNextPage();
+			}
+		}
+
 	}
 
 	/**
@@ -70,7 +91,7 @@ public class SharedPageQueue {
 	 * @return
 	 */
 	public int getPagesDownloaded() {
-		
+
 		return pagesDownload;
 
 	}
