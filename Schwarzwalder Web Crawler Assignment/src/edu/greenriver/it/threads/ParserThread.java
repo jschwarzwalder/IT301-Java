@@ -2,7 +2,7 @@
  * Jami Schwarzwalder
  * Nov 13, 2016
  * ParserThread.java
- * [Description Here]
+ * Goes through HTML and adds URLs to Queue
  */
 package edu.greenriver.it.threads;
 
@@ -14,6 +14,7 @@ import edu.greenriver.it.queue.SharedLinkQueue;
 import edu.greenriver.it.queue.SharedPageQueue;
 
 /**
+ * Goes through HTML and adds URLs to Queue
  *
  * @author Jami Schwarzwalder
  * @version 1.1
@@ -38,6 +39,11 @@ public class ParserThread extends Thread {
 		this.keywordList = keywordList;
 	}
 
+	/**
+	 * while page queue is not empty, find URLs, and add to link queue
+	 * 
+	 * @see java.lang.Thread#run()
+	 */
 	public void run() {
 		while (true) {
 
@@ -67,6 +73,11 @@ public class ParserThread extends Thread {
 		}
 	}
 
+	/**
+	 * Return the total number of times a keyword is found.
+	 * 
+	 * @return
+	 */
 	public static int getNumKeywordsFound() {
 		return numKeywordsFound;
 	}

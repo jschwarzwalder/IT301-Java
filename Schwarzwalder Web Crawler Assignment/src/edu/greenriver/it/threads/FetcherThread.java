@@ -2,7 +2,7 @@
  * Jami Schwarzwalder
  * Nov 13, 2016
  * FetcherThread.java
- * [Description Here]
+ * Retrieves HTML Page from Web and adds to queue
  */
 package edu.greenriver.it.threads;
 
@@ -17,6 +17,7 @@ import edu.greenriver.it.queue.SharedLinkQueue;
 import edu.greenriver.it.queue.SharedPageQueue;
 
 /**
+ * Retrieves HTML Page from Web and adds to queue
  *
  * @author Jami Schwarzwalder
  * @version 1.1
@@ -25,7 +26,6 @@ public class FetcherThread extends Thread {
 	private SharedLinkQueue searchList;
 	private SharedPageQueue pageList;
 	private static int failedDownloads;
-	
 
 	/**
 	 * Creates a new FetcherThread
@@ -46,7 +46,7 @@ public class FetcherThread extends Thread {
 	 */
 	public void run() {
 		while (true) {
-			
+
 			// pull a link from the link queue
 			String nextUrl = searchList.getNextLink();
 
@@ -54,13 +54,12 @@ public class FetcherThread extends Thread {
 			BufferedReader download = downloadPageContent(nextUrl);
 
 			// store the (HTML) page text on the page queue as a string
-			if (download != null)
-			{
+			if (download != null) {
 				readFromBufferedReader(download);
 			}
 
 		}
-		
+
 	}
 
 	private BufferedReader downloadPageContent(String nextUrl) {
@@ -69,12 +68,12 @@ public class FetcherThread extends Thread {
 			url = new URL(nextUrl);
 		} catch (MalformedURLException e1) {
 			System.out.println(e1.toString());
-			synchronized(FetcherThread.class){
-				failedDownloads ++;
+			synchronized (FetcherThread.class) {
+				failedDownloads++;
 			}
 			return null;
 		}
-		
+
 		HttpURLConnection connection;
 		BufferedReader download = null;
 		try {
@@ -82,8 +81,8 @@ public class FetcherThread extends Thread {
 			download = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		} catch (IOException e1) {
 			System.out.println(e1.toString());
-			synchronized(FetcherThread.class){
-				failedDownloads ++;
+			synchronized (FetcherThread.class) {
+				failedDownloads++;
 			}
 		}
 		return download;
@@ -101,17 +100,20 @@ public class FetcherThread extends Thread {
 			pageList.addPages(htmlPageContent.toString().toLowerCase());
 		} catch (IOException e) {
 			System.out.println(e.toString());
-			synchronized(FetcherThread.class){
-				failedDownloads ++;
+			synchronized (FetcherThread.class) {
+				failedDownloads++;
 			}
 		}
 	}
 
+	/**
+	 * Returns number of times and error occurs 
+	 * when trying to connect to a  website
+	 * 
+	 * @return number of times and error occurs
+	 */
 	public static int getFailedDownloads() {
 		return failedDownloads;
 	}
-
-
-	
 
 }

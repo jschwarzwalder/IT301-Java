@@ -2,7 +2,7 @@
  * Jami Schwarzwalder
  * Nov 13, 2016
  * WebCrawlerDriver.java
- * [Description Here]
+ * Drives Threads to crawl the web
  */
 package edu.greenriver.it.console;
 
@@ -14,6 +14,7 @@ import edu.greenriver.it.threads.FetcherThread;
 import edu.greenriver.it.threads.ParserThread;
 
 /**
+ * Drives Threads to crawl the web
  *
  * @author Jami Schwarzwalder
  * @version 1.1
